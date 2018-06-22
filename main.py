@@ -17,15 +17,15 @@ def all():
     donations = Donation.select()
     return render_template('donations.jinja2', donations=donations)
 
-@app.route('/create', methods=['GET', 'POST'])
-def create():
+@app.route('/add', methods=['GET', 'POST'])
+def add():
     if request.method == 'POST':
         donation = Donation(donor=request.form['name'], value=int(request.form['donation']))
         donation.save()
         return redirect(url_for('all'))
     else:
         donors = Donor.select()
-        return render_template('create.jinja2', donors=donors)
+        return render_template('add.jinja2', donors=donors)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 6738))
