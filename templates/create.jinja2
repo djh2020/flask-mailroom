@@ -1,0 +1,27 @@
+{% extends 'base.jinja2' %}
+
+{% block subtitle %}Add a donatation{% endblock subtitle %}
+
+{% block content %}
+{#<form method="POST">#}
+{#    <label for="name-input">Name:&nbsp&nbsp&nbsp&nbsp&nbsp</label><input id="name-input" type="text" name="name">#}
+{#    <br>#}
+{#    <label for="donation-input">Donation:</label><input id="donation-input" type="text" name="donation">#}
+{#    <br>#}
+{#    <br>#}
+{#    <input type="submit" value="Add Donation">#}
+{#</form>#}
+<form method="POST">
+
+    <label for="name-input">Name:</label><select id="name-input" name="name">
+        {% for donor in donors %}
+            <option value="{{ donor.id }}">{{ donor.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="donation-input">Donation:</label><input id="donation-input" type="text" name="donation">
+    <br>
+    <br>
+    <input type="submit" value="Add Donation">
+</form>
+{% endblock content %}
